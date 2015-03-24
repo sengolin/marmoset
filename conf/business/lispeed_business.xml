@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- lispeed server 业务验证规则 -->
+<business os="lispeed">
+	<regular>
+		<headers>
+			<customers>
+				<customer>adwiser</customer>
+				<customer>semwinner</customer>
+			</customers>
+			<operations>
+				<operation>create</operation>
+				<operation>read</operation>
+				<operation>update</operation>
+				<operation>delete</operation>
+				<operation>admin</operation>
+			</operations>
+			<projectids>
+				<projectid>113</projectid>
+			</projectids>
+		</headers>
+	</regular>
+</business>

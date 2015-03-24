@@ -1,0 +1,37 @@
+source /usr/local/adwiser/app/lispeed/conf/bash
+
+pid=`ps -ef | grep TcpWorkerThread | grep -v grep`
+echo $pid
+case $1 in
+'start')
+       if [ "$pid" != "" ]; then
+                echo "cannot start,marmoset is already running."
+        else
+                nohup python ../lib/TcpWorkerThread.py >marlog.log &
+                if [ $? -eq 0 ]; then
+                        echo "marmoset start success."
+                else
+                        echo "marmoset start failded."
+                fi
+        fi
+        ;;
+'stop')        
+	if [ "$pid" != "" ]; then               
+		kill -9 $pid                
+		echo "marmoset is stoped."
+        else
+                echo "marmoset is already stoped."
+        fi
+        ;;
+'check')
+ 	if [ "$pid" != "" ]; then
+		echo "marmoset is running."
+	else
+		echo "marmoset is stoped."
+	fi        
+	;;
+*)
+	echo "Usage:$0 {start | stop | check}"
+	;;
+esac
+
